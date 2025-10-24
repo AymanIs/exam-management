@@ -1,0 +1,60 @@
+<div class="exam-list-container">
+    <div class="header-section">
+      <div class="title-section">
+        <h1>Mes examens</h1>
+        <p class="exam-count">{{ getExamCount() }} examen{{ getExamCount() > 1 ? 's' : '' }} à venir</p>
+      </div>
+      <button class="btn-organize" (click)="navigateToNewExam()">
+        Organiser un examen
+      </button>
+    </div>
+  
+    <div *ngIf="loading" class="loading">
+      Chargement des examens...
+    </div>
+  
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="!loading && exams.length === 0" class="no-exams">
+      Aucun examen trouvé. Organisez votre premier examen !
+    </div>
+  
+    <div *ngIf="!loading && exams.length > 0" class="exams-list">
+      <div *ngFor="let exam of exams" class="exam-row">
+        <div class="exam-info student-info">
+          <span class="icon">👤</span>
+          <span class="text">{{ exam.student.first_name }}.{{ exam.student.last_name.charAt(0) }}</span>
+        </div>
+  
+        <div class="exam-info location-info">
+          <span class="icon">📍</span>
+          <span class="text" [class.en-attente]="shouldShowEnAttente(exam)">
+            {{ displayMeetingPoint(exam) }}
+          </span>
+        </div>
+  
+        <div class="exam-info date-info">
+          <span class="icon">📅</span>
+          <span class="text" [class.en-attente]="shouldShowEnAttente(exam)">
+            {{ displayDate(exam) }}
+          </span>
+        </div>
+  
+        <div class="exam-info time-info">
+          <span class="icon">🕐</span>
+          <span class="text" [class.en-attente]="shouldShowEnAttente(exam)">
+            {{ displayTime(exam) }}
+          </span>
+        </div>
+  
+        <div class="exam-info status-info">
+          <span class="status-badge" [ngClass]="getStatusClass(exam.status)">
+            <span class="status-icon">{{ getStatusIcon(exam.status) }}</span>
+            {{ exam.status }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>

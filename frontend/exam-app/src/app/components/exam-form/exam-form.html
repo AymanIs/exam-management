@@ -1,0 +1,106 @@
+<div class="exam-form-container">
+    <div class="form-card">
+      <h2>Organiser un Examen</h2>
+  
+      <div *ngIf="success" class="success-message">
+        ✅ Examen créé avec succès ! Redirection...
+      </div>
+  
+      <div *ngIf="error" class="error-message">
+        ❌ {{ error }}
+      </div>
+  
+      <form (ngSubmit)="onSubmit()" #examForm="ngForm">
+        <div class="form-section">
+          <h3>Informations de l'étudiant</h3>
+          
+          <div class="form-group">
+            <label for="firstName">Prénom *</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              [(ngModel)]="exam.student.first_name"
+              required
+              placeholder="Entrez le prénom"
+              class="form-control"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="lastName">Nom *</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              [(ngModel)]="exam.student.last_name"
+              required
+              placeholder="Entrez le nom"
+              class="form-control"
+            />
+          </div>
+        </div>
+  
+        <div class="form-section">
+          <h3>Détails de l'examen</h3>
+  
+          <div class="form-group">
+            <label for="meetingPoint">Lieu de rendez-vous *</label>
+            <input
+              type="text"
+              id="meetingPoint"
+              name="meetingPoint"
+              [(ngModel)]="exam.meeting_point"
+              required
+              placeholder="Ex: Salle A101"
+              class="form-control"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="date">Date et heure *</label>
+            <input
+              type="datetime-local"
+              id="date"
+              name="date"
+              [(ngModel)]="exam.date"
+              required
+              class="form-control"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="status">Statut</label>
+            <select
+              id="status"
+              name="status"
+              [(ngModel)]="exam.status"
+              class="form-control"
+            >
+              <option *ngFor="let status of statuses" [value]="status">
+                {{ status }}
+              </option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="form-actions">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="cancel()"
+            [disabled]="submitting"
+          >
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!isFormValid() || submitting"
+          >
+            {{ submitting ? 'Création...' : 'Créer l\'examen' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

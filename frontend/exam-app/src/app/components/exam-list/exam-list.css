@@ -1,0 +1,199 @@
+.exam-list-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #ffffff;
+  }
+  
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .title-section h1 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 5px 0;
+  }
+  
+  .exam-count {
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+    font-weight: 400;
+  }
+  
+  .btn-organize {
+    background-color: #ff6b35;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  }
+  
+  .btn-organize:hover {
+    background-color: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+  }
+  
+  .loading, .error, .no-exams {
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 20px 0;
+    font-size: 1.1em;
+  }
+  
+  .loading {
+    background-color: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .error {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+  
+  .no-exams {
+    background-color: #fff3e0;
+    color: #e65100;
+  }
+  
+  .exams-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .exam-row {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1.5fr 1fr 2fr;
+    align-items: center;
+    padding: 20px 25px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    gap: 20px;
+  }
+  
+  .exam-row:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    border-color: #d0d0d0;
+  }
+  
+  .exam-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .exam-info .icon {
+    font-size: 1.2em;
+    opacity: 0.7;
+  }
+  
+  .exam-info .text {
+    font-size: 0.95em;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .exam-info .text.en-attente {
+    color: #999;
+    font-style: italic;
+    font-weight: 400;
+  }
+  
+  .student-info .text {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  
+  .status-info {
+    justify-content: flex-end;
+  }
+  
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .status-icon {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  
+  .status-confirmed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .status-to-organize {
+    background-color: #fff3e0;
+    color: #ef6c00;
+  }
+  
+  .status-searching {
+    background-color: #f3f3f3;
+    color: #666;
+  }
+  
+  .status-cancelled {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .exam-row {
+      grid-template-columns: 1.5fr 2fr 1.5fr 1fr 2fr;
+      gap: 15px;
+      padding: 18px 20px;
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .exam-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 20px;
+    }
+  
+    .exam-info {
+      justify-content: flex-start;
+    }
+  
+    .status-info {
+      justify-content: flex-start;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .header-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .btn-organize {
+      width: 100%;
+    }
+  }
